@@ -1,18 +1,18 @@
 <?php
 
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$data = 'sorucevap';
-
-$baglan = mysql_connect ( $host, $user, $pass ) or die ( "Baglanti sirasinda bir hata olustu." );
-mysql_select_db ( $data, $baglan ) or die ( "Veri tabani secilemedi." );
-session_start ();
+define("MYSQL_HOST", "localhost");
+define("MYSQL_USER", "root");
+define("MYSQL_PASS", ""); // localhost icin bostur.
+define("MYSQL_DATA", "sorucevap");
 
 
-///// TEMPLATE
+
+
+///// dosya dizini
 
 
 define("TEMP", "Templates/");
+// dil
+include 'Dil/tr.php';
 
 ?>

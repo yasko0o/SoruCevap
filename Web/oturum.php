@@ -16,7 +16,16 @@ class oturum {
 	}
 	
 	public function oturum_olustur($ref) {
+		global $veritabani;
+		$this->oturum_sil();
+		$_SESSION['giris'] = true;
+		$_SESSION['hesap_bilgileri'] = $veritabani->hesap_Bilgileri($ref);
 		
+	}
+	
+	public function oturum_sil() {
+		unset($_SESSION['hesap_bilgileri']);
+		unset($_SESSION['giris']);
 	}
 	
 	public function oturum_bilgisi() {
