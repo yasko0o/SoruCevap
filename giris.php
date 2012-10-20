@@ -91,13 +91,10 @@ li {
 <body>
 
 	<div id="govde">
-		<?php include TEMP.'header.tpl';?>
-		<div id="icerik">
-		
-			<?php include TEMP.'giris.tpl'?>
-			
-	
-		</div>
+<?php include TEMP.'header.tpl';?>
+<div id="icerik">
+<?php include TEMP.'giris.tpl'?>
+</div>
 	</div>
 
 </body>

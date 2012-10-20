@@ -17,7 +17,7 @@ class au {
 			
 			Aktivasyon kodunuz : {$kod}
 			
-			".SISTEM_URL."hesap.php?git=act&kod={$kod}
+			".SISTEM_URL."aktivasyon.php?git=act&kod={$kod}
 		
 		
 		";

@@ -28,12 +28,13 @@ class hesap {
 		if (! isset ( $_POST ['pass'] ) or $_POST ['pass'] == "") {
 			$hata->hata_Ekle ( 'pass', giris_pass_bos );
 		} elseif ($veritabani->hesap_Giris ( $_POST ['email'], $_POST ['pass'] ) == false) {
-			$hata->hata_Ekle ( 'email', giris_pass_hata );
+			$hata->hata_Ekle ( 'pass', giris_pass_hata );
 		}
 		
 		if ($hata->hata_Toplam () == 0) {
 			$oturum->oturum_olustur ( $_POST ['email'] );
-			header ( "Location: main.php" );
+			header ( "Location: hesap.php" );
+		
 		}
 	
 	}
@@ -51,22 +52,23 @@ class hesap {
 			$hata->hata_Ekle ( 'pass', giris_pass_bos );
 		}
 		
-		
-		if($hata->hata_Toplam() == 0) {
-		
-			if(ACT_GEREKLI) {
+		if ($hata->hata_Toplam () == 0) {
+			
+			if (ACT_GEREKLI) {
 				$act = 0;
-				$kod = $au->act_olustur(rand(0, 39) + $_POST['email']);
-				$au->act_gonder($_POST['email'], $kod);
+				$kod = $au->act_olustur ( rand ( 0, 39 ) );
+				$au->act_gonder ( $_POST ['email'], $kod );
 			} else {
 				$act = 1;
 			}
 			
-			$veritabani->hesap_Kayit($_POST['email'], md5($_POST['pass']), $act);
-			header('location:hesap.php?git=basari&act='.$act);
-			
+			if (! $veritabani->hesap_Kayit ( $_POST ['email'], md5 ( $_POST ['pass'] ), $act, uniqid ( 'yk_' ) )) {
+				header ( 'location: kayit.php?git=hata' );
+			} else {
+				header ( 'location: kayit.php?git=basari&act=' . $act );
+			}
 		}
-		
+	
 	}
 
 }

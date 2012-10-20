@@ -1,6 +1,9 @@
 <?php
-include 'ayar.php';
-include 'Web/sistem.php';
+
+include 'Web/veritabani.php';
+include 'Web/oturum.php';
+include 'Web/hesap.php';
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -88,8 +91,10 @@ li {
 <body>
 
 	<div id="govde">
-		<?php include TEMP.'header.tpl';?>
-		<div id="icerik"></div>
+<?php include TEMP.'header.tpl';?>
+<div id="icerik">
+<?php include TEMP.'kayit.tpl'?>
+</div>
 	</div>
 
 </body>
