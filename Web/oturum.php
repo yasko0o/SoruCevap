@@ -5,7 +5,6 @@ class oturum {
 	private $oturum = false;
 	
 	public function oturum() {
-		session_start ();
 		if (! isset ( $_SESSION ['giris'] ) or $_SESSION ['giris'] == false) {
 			$this->oturum = false;
 		} else {

@@ -11,7 +11,7 @@ class veritabani {
 		$result = mysql_query ( "SELECT email, pass FROM hesap WHERE email = '$email'" );
 		$arr = mysql_fetch_array ( $result );
 		
-		if ($arr ['pass'] != md5($pass))
+		if ($arr ['pass'] != md5 ( $pass ))
 			return false;
 		else
 			return true;
@@ -47,7 +47,32 @@ class veritabani {
 	
 	public function hesap_Bilgileri($ref) {
 		$query = mysql_query ( "SELECT * FROM hesap WHERE email = '{$ref}'" );
-		return mysql_fetch_array ( $query ) or die(mysql_error());
+		return mysql_fetch_array ( $query ) or die ( mysql_error () );
+	}
+	
+	public function hesap_BilgiAlani($uniq = false, $ref, $alan) {
+		if (! $uniq) {
+			$q = "SELECT {$alan} FROM hesap WHERE email = '{$ref}'";
+		} else {
+			$q = "SELECT {$alan} FROM hesap WHERE uniq = '{$ref}'";
+		}
+		$result = mysql_query ( $q );
+		return mysql_fetch_array ( $result );
+	}
+	
+	public function hesap_Guncelle($ref, $alan, $deger) {
+		if (! $uniq) {
+			$q = "UPDATE hesap SET {$alan} = '{$deger}' WHERE email = '{$ref}'";
+		} else {
+			$q = "UPDATE hesap SET {$alan} = '{$deger}' WHERE uniq = '{$ref}'";
+		}
+		
+		if (mysql_query ( $q )) {
+			return true;
+		} else {
+			return false;
+		}
+	
 	}
 	
 	public function soru_Listele($ref) {
@@ -58,6 +83,23 @@ class veritabani {
 		}
 		
 		return $data;
+	}
+	
+	public function act_ekle($kod) {
+		$q = "INSERT INTO aktivasyon (kod) VALUES ('$kod')";
+		if (mysql_query ( $q )) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public function act_dogrula($kod) {
+		$result = mysql_query ( "SELECT kod FROM aktivasyon WHERE kod = '{$kod}'" );
+		if (mysql_num_rows ( $result ))
+			return true;
+		else
+			return false;
 	}
 
 }

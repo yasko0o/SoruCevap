@@ -6,7 +6,7 @@ class au {
 	}
 	
 	public function act_gonder($email, $kod) {
-		$subject = SISTEM_ISIM." Aktivasyon ";
+		$subject = SISTEM_ISIM . " Aktivasyon ";
 		
 		$message = "
 		
@@ -17,18 +17,31 @@ class au {
 			
 			Aktivasyon kodunuz : {$kod}
 			
-			".SISTEM_URL."aktivasyon.php?git=act&kod={$kod}
+			" . SISTEM_URL . "aktivasyon.php?git=act&kod={$kod}&email={$email}
 		
 		
 		";
 		
-		
-		
-		mail($email, $subject, $message);
-		
+		mail ( $email, $subject, $message );
+	
+	}
+	
+	public function act_bitir() {
+		global $veritabani;
+		if (! isset ( $_SESSION ['email'] )) {
+			header ( 'Location: aktivasyon.php' );
+		} else {
+			if ($veritabani->hesap_Guncelle ( $_SESSION ['email'], 'acces', 1 )) {
+				return true;
+				unset($_SESSION['email']);
+			} else {
+				return false;
+			}
+		}
+	
 	}
 }
 
-$au = new au();
+$au = new au ();
 
 ?>
