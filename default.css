@@ -1,0 +1,120 @@
+@import url("button.css");
+
+body {
+	font-family: Arial;
+	font-size: 10px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #203f58;
+}
+
+ul, li {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.clear {
+	clear:both;
+}
+#genel {
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+header {
+	background-color: #1d5a89;
+}
+header #logo {
+	font-family: Arial;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 200px;
+	float: left;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 50px;
+}
+header #logo .cevap {
+	color: #3F9920;
+}
+header #menu {
+	float: right;
+	padding: 15px;
+	font-size: 16px;
+	color: #6A8ECA;
+}
+#hemen .mesaj {
+	font-family: Arial;
+	font-size: 46px;
+	font-weight: bold;
+	color: #FFFBF0;
+	font-style: italic;
+}
+#icerik #hemen {
+	padding-left: 100px;
+	padding-top: 100px;
+}
+#genel footer {
+	font-size: 14px;
+	text-align: center;
+	font-style: italic;
+	color: #FFFFFF;
+}
+#genel #icerik {
+	background-color: #3b84bd;
+	height: 600px;
+	margin: 0px;
+	padding-top: 20px;
+}
+#kayit_form {
+	background-color: #FFFFFF;
+	width: 700px;
+	margin-right: auto;
+	margin-left: auto;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	padding-left: 50px;
+}
+
+#kayit_form h3 {
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	font-size: 14px;
+	font-family: "Trebuchet MS";
+	color: #4B4B4B;
+	font-weight: normal;
+}
+#kayit_form h2 {
+	font-size: 18px;
+	font-family: "Trebuchet MS";
+	font-weight: normal;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D5D5D5;
+	padding-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 25px;
+}
+#kayit_form h1 {
+	margin: 0px;
+	font-family: "Trebuchet MS";
+	font-size: 16px;
+	color: #343434;
+	font-weight: normal;
+}
+#kayit_form .inputbox {
+	padding: 5px;
+	font-family: "Trebuchet MS";
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	border: 1px solid #D5D5D5;
+}

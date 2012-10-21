@@ -1,11 +1,9 @@
-<div id="kallanici_menu">
-
-			<ul>
-				<li><a href="index.php?git=sorular">Ana Sayfa</a></li>
-				<li><a href="index.php?git=sorusor">Bir Soru Sor</a></li>
-				<li><a href="index.php?git=ayar">Ayarlar</a></li>
-				<li><a href="index.php?git=cikis">Cikis</a></li>
-				<div class="temizle"></div>
-			</ul>
-
+<header>
+		<div id="logo">
+			<span class="soru">Soru.</span><span class="cevap">Cevap</span>
 		</div>
+		<div id="menu">
+			bir hesabiniz varmi ? <span id="giris" class="button medium blue">Giris yap</span>
+		</div>
+		<div class="clear"></div>
+</header>

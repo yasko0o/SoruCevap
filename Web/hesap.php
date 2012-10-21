@@ -52,6 +52,10 @@ class hesap {
 			$hata->hata_Ekle ( 'pass', giris_pass_bos );
 		}
 		
+		if (! isset ( $_POST ['isim'] ) or $_POST ['isim'] == "") {
+			$hata->hata_Ekle ( 'isim', giris_isim_bos );
+		}
+		
 		if ($hata->hata_Toplam () == 0) {
 			
 			if (ACT_GEREKLI) {
