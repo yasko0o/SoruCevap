@@ -22,7 +22,7 @@ class sistem {
 	
 	public function sayfa_yukle() {
 		global $oturum;
-		if(!$this->oturum AND $this->aktif_sayfa == 'hesap') {
+		if($this->oturum == FALSE AND $this->aktif_sayfa == 'hesap') {
 			header('Location: giris.php');
 		}
 	}

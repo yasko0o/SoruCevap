@@ -46,6 +46,25 @@ header #menu {
 	font-size: 16px;
 	color: #6A8ECA;
 }
+header #lg_menu {
+	float: right;
+	width: 370px;
+	padding-top: 16px;
+	padding-right: 15px;
+	padding-bottom: 16px;
+	padding-left: 15px;
+}
+header #lg_menu ul li a {
+	display: block;
+	float: left;
+	color: #ACD1F7;
+	font-size: 14px;
+	margin-right: 10px;
+	text-decoration: none;
+}
+header #lg_menu ul li a:hover {
+	color: white;
+}
 #hemen .mesaj {
 	font-family: Arial;
 	font-size: 46px;
@@ -117,4 +136,57 @@ header #menu {
 	border-radius: 5px;
 	background-color: #FFFFFF;
 	border: 1px solid #D5D5D5;
+}
+
+#hesap {
+	background-color: #FFFFFF;
+	width: 700px;
+	margin-right: auto;
+	margin-left: auto;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	padding-left: 50px;
+}
+#hesap h2 {
+	font-size: 18px;
+	font-family: "Trebuchet MS";
+	font-weight: normal;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D5D5D5;
+	padding-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 25px;
+}
+#hesap #soru {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D5D5D5;
+	padding-bottom: 7px;
+}
+#hesap #soru h3 {
+	margin-bottom: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+#hesap #soru .zaman {
+	font-size: 10px;
+	color: #5F5F5F;
+}
+#hesap #soru .yanitla {
+	display: block;
+}
+#hesap #soru .yanitla a {
+	font-size: 16px;
+	display: block;
+	margin-top: 5px;
+	color: #4E85E0;
+	text-decoration: none;
+}
+#hesap #soru .yanitla a:hover {
+	color: #2A1FFF;
+	text-decoration: underline;
 }

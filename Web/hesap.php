@@ -2,6 +2,7 @@
 
 include 'au.php';
 include 'hata.php';
+include 'oturum.php';
 
 class hesap {
 	

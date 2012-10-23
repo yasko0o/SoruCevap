@@ -34,4 +34,6 @@ class oturum {
 
 }
 
-$oturum = new oturum ();
+$oturum = new oturum();
+
+?>

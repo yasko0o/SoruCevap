@@ -1,7 +1,7 @@
 <?php
 
 include 'Web/veritabani.php';
-include 'Web/oturum.php';
+//include 'Web/oturum.php';
 include 'Web/hesap.php';
 
 ?>
