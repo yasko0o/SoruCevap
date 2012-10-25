@@ -26,7 +26,7 @@ include 'Web/sistem.php';
 			else
 				include TEMP.'/header.tpl';
 		?>
-		<div id="icerik">
+		<div id="icerik_hesap">
                     <div id="hesap">
                        <?php
                        
@@ -37,7 +37,8 @@ include 'Web/sistem.php';
                                     include TEMP.'/hesap/ara.tpl';
                                     break;
                                 case 'cikis':
-                                    include TEMP.'/hesap/cikis.tpl';
+                                	$oturum->oturum_sil();
+                                    //include TEMP.'/hesap/cikis.tpl';
                                     break;
                                 case 'profil':
                                     include TEMP.'/hesap/profil.tpl';

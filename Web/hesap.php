@@ -1,8 +1,20 @@
 <?php
 
+
+/*
+ * 
+ * 
+ * 
+ * <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
+ * 			www.sanalkurs.com | king.achiles
+ * Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+ * 
+ * 
+ */
+
+
 include 'au.php';
 include 'hata.php';
-include 'oturum.php';
 
 class hesap {
 	
@@ -80,7 +92,7 @@ class hesap {
 			
 			}
 			
-			if (! $veritabani->hesap_Kayit ( $_POST ['email'], md5 ( $_POST ['pass'] ), $act, uniqid ( 'yk_' ) )) {
+			if (! $veritabani->hesap_Kayit ( $_POST ['email'], md5 ( $_POST ['pass'] ), $_POST['isimsoyisim'], $act, uniqid ( 'yk_' ) )) {
 				header ( 'location: kayit.php?git=hata' );
 			} else {
 				if (! ACT_GEREKLI and GIRIS_OTO) {

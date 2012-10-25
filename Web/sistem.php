@@ -1,5 +1,18 @@
 <?php
 
+
+/*
+ *
+*
+*
+* <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
+* 			www.sanalkurs.com | king.achiles
+* Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+*
+*
+*/
+
+
 include 'oturum.php';
 
 class sistem {

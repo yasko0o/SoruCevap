@@ -1,5 +1,18 @@
 <?php
 
+
+/*
+ *
+*
+*
+* <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
+* 			www.sanalkurs.com | king.achiles
+* Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+*
+*
+*/
+
+
 class hata {
 	
 	private $toplam_hata = 0;

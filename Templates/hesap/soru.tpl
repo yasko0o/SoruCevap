@@ -1,7 +1,26 @@
 
-            	<h2>Sorular</h2>
-			<div id="soru">
-           	  <h3>Bilgi paylastikca guzeldir, siz bunu yapmaktan mutlu oluyormusunuz ? </h3>
-              <span class="zaman">5 saat once</span>
-              <span class="yanitla"><a href="#">Yanitla</a></span>
-            </div>
+<h2>Sorular</h2>
+<?php 
+	
+	global $veritabani;
+	$data = $veritabani->soru_Listele($_SESSION['hesap_uniq']);
+	foreach($data as $liste => $soru) {
+		
+		echo "
+		
+		
+		<div id='soru'>
+      		<h3>{$soru[1]}</h3>
+      		<span class='zaman'>".date('d-m-y', $soru[5])."</span>
+      		<span class='yanitla'><a href='#'>Yanitla</a></span>
+		</div>
+		
+		
+		
+		";
+		
+	}
+
+
+ ?>
+

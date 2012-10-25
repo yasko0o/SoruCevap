@@ -1,0 +1,1 @@
+<?php if(isset($_SESSION['giris'])) { echo ' var ';} else { echo 'yok'; } ?>

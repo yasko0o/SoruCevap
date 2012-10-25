@@ -1,5 +1,17 @@
 <?php
 
+
+/*
+ *
+*
+*
+* <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
+* 			www.sanalkurs.com | king.achiles
+* Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+*
+*
+*/
+
 class oturum {
 	
 	private $oturum = false;
@@ -15,10 +27,10 @@ class oturum {
 	
 	public function oturum_olustur($ref) {
 		global $veritabani;
-		$this->oturum_sil ();
+		//$this->oturum_sil ();
 		$_SESSION ['giris'] = true;
-		$_SESSION ['hesap_bilgileri'] = $veritabani->hesap_Bilgileri ( $ref );
-		// $_SESSION ['hesap_uniq'] = $_SESSION ['hesap_bilgileri']['uniq'];
+		$_SESSION ['hesap_uniq'] = $veritabani->hesap_BilgiAlani(false, $ref, 'uniq');
+		//$_SESSION ['hesap_bilgileri'] = $veritabani->hesap_Bilgileri($ref);
 	
 	}
 	
@@ -26,6 +38,7 @@ class oturum {
 		//unset ( $_SESSION ['hesap_uniq'] );
 		unset ( $_SESSION ['hesap_bilgileri'] );
 		unset ( $_SESSION ['giris'] );
+		
 	}
 	
 	public function oturum_bilgisi() {

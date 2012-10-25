@@ -88,6 +88,14 @@ header #lg_menu ul li a:hover {
 	margin: 0px;
 	padding-top: 20px;
 }
+
+#genel #icerik_hesap {
+	background-color: #3b84bd;
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
 #kayit_form {
 	background-color: #FFFFFF;
 	width: 700px;

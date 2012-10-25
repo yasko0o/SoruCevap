@@ -1,5 +1,18 @@
 <?php
 
+
+/*
+ *
+*
+*
+* <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
+* 			www.sanalkurs.com | king.achiles
+* Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+*
+*
+*/
+
+
 class au {
 	public function act_olustur($e) {
 		return md5 ( $e );

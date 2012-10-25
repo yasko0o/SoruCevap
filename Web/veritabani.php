@@ -1,5 +1,12 @@
 <?php
+
+/*
+ * <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk . www.sanalkurs.com | king.achiles Ne
+ * yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+ */
+
 include 'ayar.php';
+
 class veritabani {
 	private $baglan;
 	public function __construct() {
@@ -18,8 +25,8 @@ class veritabani {
 	
 	}
 	
-	public function hesap_Kayit($email, $pass, $acc, $uniq) {
-		$q = "INSERT INTO hesap (email, pass, acces, uniq) VALUES ('$email', '$pass', '$acc', '$uniq')";
+	public function hesap_Kayit($email, $pass, $isim, $acc, $uniq) {
+		$q = "INSERT INTO hesap (email, pass, isimsoyisim, acces, uniq) VALUES ('$email', '$pass', '$isim', '$acc', '$uniq')";
 		
 		if (mysql_query ( $q )) {
 			return true;
@@ -45,19 +52,21 @@ class veritabani {
 		// simdilik bos!
 	}
 	
-	public function hesap_Bilgileri($ref) {
-		$query = mysql_query ( "SELECT * FROM hesap WHERE email = '{$ref}'" );
+	public function hesap_Bilgileri($refe) {
+		$query = mysql_query ( "SELECT * FROM hesap WHERE email = '$refe'" );
 		return mysql_fetch_array ( $query ) or die ( mysql_error () );
 	}
 	
-	public function hesap_BilgiAlani($uniq = false, $ref, $alan) {
-		if (! $uniq) {
-			$q = "SELECT {$alan} FROM hesap WHERE email = '{$ref}'";
+	public function hesap_BilgiAlani($uniq, $ref, $alan) {
+		
+		if ($uniq == false) {
+			$q = "SELECT $alan FROM hesap WHERE email = '$ref'";
 		} else {
-			$q = "SELECT {$alan} FROM hesap WHERE uniq = '{$ref}'";
+			$q = "SELECT $alan FROM hesap WHERE uniq = '$ref'";
 		}
 		$result = mysql_query ( $q );
-		return mysql_fetch_array ( $result );
+		$data = mysql_fetch_array ( $result );
+		return $data [0];
 	}
 	
 	public function hesap_Guncelle($ref, $alan, $deger) {
@@ -76,8 +85,8 @@ class veritabani {
 	}
 	
 	public function soru_Listele($ref) {
-		$data = null;
-		$result = mysql_query ( "SELECT * FROM sorular WHERE cevaplayan = '{$ref}' AND durum = 0 ORDER BY id DESC" );
+		$data = array ();
+		$result = mysql_query ( "SELECT * FROM sorular WHERE cevaplayan = '$ref' ORDER BY id DESC" );
 		while ( $row = mysql_fetch_array ( $result ) ) {
 			array_push ( $data, $row );
 		}
@@ -101,7 +110,6 @@ class veritabani {
 		else
 			return false;
 	}
-
 }
 
 $veritabani = new veritabani ();
