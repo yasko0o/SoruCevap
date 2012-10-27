@@ -12,7 +12,7 @@
 		<div id='soru'>
       		<h3>{$soru[1]}</h3>
       		<span class='zaman'>".date('d-m-y', $soru[5])."</span>
-      		<span class='yanitla'><a href='#'>Yanitla</a></span>
+      		<span class='yanitla'><a href='?soru={$soru[0]}&git=cevap'>Yanitla</a></span>
 		</div>
 		
 		

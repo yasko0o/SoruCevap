@@ -2,6 +2,7 @@
 
 include 'Web/veritabani.php';
 include 'Web/sistem.php';
+include 'Web/hesap.php';
 
 
 ?>
@@ -49,6 +50,9 @@ include 'Web/sistem.php';
                                 case 'soru':
                                     include TEMP.'/hesap/soru.tpl';
                                     break;
+                                case 'cevap':
+                                	include TEMP.'/hesap/cevap.tpl';
+                                	break;
                                 case 'populer':
                                 default:
                                     include TEMP.'/hesap/populer.tpl';

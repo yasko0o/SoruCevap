@@ -94,6 +94,11 @@ class veritabani {
 		return $data;
 	}
 	
+	public function soru_Bul($id) {
+		$result = mysql_query ( "SELECT * FROM sorular WHERE id = '$id'" );
+		return mysql_fetch_array($result);
+	}
+	
 	public function act_ekle($kod) {
 		$q = "INSERT INTO aktivasyon (kod) VALUES ('$kod')";
 		if (mysql_query ( $q )) {
