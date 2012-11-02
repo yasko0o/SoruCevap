@@ -2,22 +2,22 @@
 
 
 /*
- * 
- * 
- * 
- * <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
- * 			www.sanalkurs.com | king.achiles
- * Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
- * 
- * 
- */
+ *
+*
+*
+* <<<<<<<<<<<<<<<<<<<<<<< Yasin Kucuk .
+* 			www.sanalkurs.com | king.achiles
+* Ne yaptiginizi bildiginiz surece degistirmekte ozgursunuz !
+*
+*
+*/
 
 
 include 'au.php';
 include 'hata.php';
 
 class hesap {
-	
+
 	public function hesap() {
 		switch (@$_POST ['key']) {
 			case 'giris' :
@@ -32,53 +32,73 @@ class hesap {
 			case 'act':
 				$this->act();
 				break;
+			case 'cevap':
+				$this->soru_Cevap();
+				break;
 		}
 	}
-	
+	private function soru_Cevap() {
+		global $veritabani, $hata;
+		if(! isset($_POST['yanit']) or $_POST['yanit'] == "") {
+			$hata->hata_Ekle('cevap', cevap_kutu_bos);
+		}elseif(strlen($_POST['cevap']) > CEVAP_MAX) {
+			$hata->hata_Ekle('cevap', cevap_max_karakter);
+		}
+
+		if($hata->hata_Toplam() == 0) {
+			$soru = $veritabani->soru_Bul($_GET['soru']);
+			$veritabani->soru_Guncelle($soru['id'], 'durum', 1);
+			$veritabani->soru_Guncelle($soru['id'], 'cevap', $_POST['yanit']);
+			$veritabani->bildiri_Ekle($soru['soran'], bildiri_yanit, 0);
+			header("Location: hesap.php?git=soru");
+
+		}
+
+	}
 	private function Giris() {
 		global $veritabani, $oturum, $hata;
-		
+
 		if (! isset ( $_POST ['email'] ) or $_POST ['email'] == "") {
 			$hata->hata_Ekle ( 'email', giris_email_bos );
 		} elseif (! $veritabani->hesap_Kontrol ( $_POST ['email'] )) {
 			$hata->hata_Ekle ( 'email', giris_email_yok );
 		}
-		
+
 		if (! isset ( $_POST ['pass'] ) or $_POST ['pass'] == "") {
 			$hata->hata_Ekle ( 'pass', giris_pass_bos );
 		} elseif ($veritabani->hesap_Giris ( $_POST ['email'], $_POST ['pass'] ) == false) {
 			$hata->hata_Ekle ( 'pass', giris_pass_hata );
 		}
-		
+
 		if ($hata->hata_Toplam () == 0) {
 			$oturum->oturum_olustur ( $_POST ['email'] );
 			header ( "Location: hesap.php" );
-		
+
 		}
-	
+
 	}
-	
+
 	private function Kayit() {
 		global $veritabani, $hata, $au, $oturum;
-		
+
 		if (! isset ( $_POST ['email'] ) or $_POST ['email'] == "") {
 			$hata->hata_Ekle ( 'email', giris_email_bos );
 		} elseif ($veritabani->hesap_Kontrol ( $_POST ['email'] )) {
 			$hata->hata_Ekle ( 'email', giris_email_ayni );
 		}
-		
+
 		if (! isset ( $_POST ['pass'] ) or $_POST ['pass'] == "") {
 			$hata->hata_Ekle ( 'pass', giris_pass_bos );
 		} elseif ($_POST ['pass'] != $_POST ['pass2']) {
 			$hata->hata_Ekle ( 'pass', giris_pass_esle );
 		}
-		
+
 		if (! isset ( $_POST ['isimsoyisim'] ) or $_POST ['isimsoyisim'] == "") {
 			$hata->hata_Ekle ( 'isim', giris_isim_bos );
 		}
-		
+
 		if ($hata->hata_Toplam () == 0) {
-			
+
 			if (ACT_GEREKLI) {
 				$act = 0;
 				$kod = $au->act_olustur ( rand ( 0, 39 ) );
@@ -89,9 +109,9 @@ class hesap {
 			} else {
 				$act = 1;
 				$url = 'kayit.php?git=basari&act=' . $act;
-			
+					
 			}
-			
+
 			if (! $veritabani->hesap_Kayit ( $_POST ['email'], md5 ( $_POST ['pass'] ), $_POST['isimsoyisim'], $act, uniqid ( 'yk_' ) )) {
 				header ( 'location: kayit.php?git=hata' );
 			} else {
@@ -102,9 +122,9 @@ class hesap {
 				header ( 'location: ' . $url );
 			}
 		}
-	
+
 	}
-	
+
 	private function act() {
 		global $veritabani, $hata;
 		if (! isset ( $_POST ['email'] ) or $_POST ['email'] == "") {
@@ -112,13 +132,13 @@ class hesap {
 		} elseif (!$veritabani->hesap_Kontrol ( $_POST ['email'] )) {
 			$hata->hata_Ekle ( 'email', act_email_yok );
 		}
-		
+
 		if ($hata->hata_Toplam () == 0) {
 			$_SESSION['email'] = $_POST['email'];
 			header('Location: aktivasyon.php?adim=a2');
 		}
 	}
-	
+
 	private function aktivasyon() {
 		global $veritabani, $hata, $au;
 		if (! isset ( $_POST ['act_kod'] ) or $_POST ['act_kod'] == "") {
@@ -126,7 +146,7 @@ class hesap {
 		} elseif (! $veritabani->act_dogrula ( $_POST ['act_kod'] )) {
 			$hata->hata_Ekle ( 'act_kod', act_kod_hata );
 		}
-		
+
 		if ($hata->hata_Toplam () == 0) {
 			if ($au->act_bitir ()) {
 				header ( 'Location: aktivasyon.php?adim=sonuc&durum=true' );

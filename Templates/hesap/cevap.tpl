@@ -14,12 +14,12 @@ echo "
             	<form method='post' action='#'>
             	<div id='yanit_kutu'>
                 	<input type='hidden' value='cevap' name='key' id='key' />
-                	<input type='text' name='yani' id='yanit' class='yanit_text'/>
+                	<textarea name='yanit' id='yanit' class='yanit_text'></textarea>
                 
                 </div>
                 
                 <div id='dokun'>
-                	<input type='submit' class='button medium blue' value = 'gonder'/>
+                	 <input type='submit' class='button medium blue' value = 'gonder'/>
                 </div>
             	</form>
             </div>

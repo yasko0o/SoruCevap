@@ -23,6 +23,10 @@ include 'Dil/tr.php';
 
 define ( "ACT_GEREKLI", true );
 
+
+define("CEVAP_MAX", 500);
+define("CEVAP_VIDEO", false); // bu suan kapali daha aktif hale getirilmesi icin kodlar yazilmadi..
+
 session_start();
 
 ?>
