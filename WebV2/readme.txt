@@ -1,0 +1,1 @@
+V2 de, kodlar daha duzenli ve elden tekrar gecirilmistir arkadaslar suan tam bitmedi ama calismalarim devam ediyor !
