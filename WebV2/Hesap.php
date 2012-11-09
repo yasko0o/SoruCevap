@@ -130,9 +130,9 @@ class Hesap {
 		
 		if ($Hata->Toplam () == 0) {
 			$soru = $Veritabani->soru_Bul ( $_GET ['soru'] );
-			$Veritabani->soru_Guncelle ( $soru ['id'], 'durum', 1 );
-			$Veritabani->soru_Guncelle ( $soru ['id'], 'cevap', $_POST ['yanit'] );
-			$Veritabani->bildiri_Ekle ( $soru ['soran'], bildiri_yanit, 0 );
+			$Veritabani->Soru_Guncelle ( $soru ['id'], 'durum', 1 );
+			$Veritabani->Soru_Guncelle ( $soru ['id'], 'cevap', $_POST ['yanit'] );
+			$Veritabani->Bildiri_Ekle ( $soru ['soran'], bildiri_yanit, 0 );
 			header ( "Location: hesap.php?git=soru" );
 		
 		}
@@ -143,7 +143,19 @@ class Hesap {
 	 * @access private
 	 */
 	private function Soru_Sor() {
-		// Not yet implemented
+		global $Veritabani, $Hata;		
+		if (! isset ( $_POST ['soru'] ) or $_POST ['soru'] == "") {
+			$Hata->Ekle ( 'soru', soru_kutu_bos );
+		} elseif (strlen ( $_POST ['soru'] ) > DEF_SORU_MAX_KARAKTER) {
+			$Hata->Ekle ( 'soru', soru_max_karakter );
+		}
+		
+		if ($Hata->Toplam () == 0) {
+			$Veritabani->Soru_Ekle($_SESSION['hesap_uniq'], $_GET['kisi'], $_POST['soru'], time())
+			$Veritabani->Bildiri_Ekle($_GET['kisi'], YENI_SORU_SORULDU, 0)
+			header ( "Location: hesap.php?git=soru" );
+		
+		}
 	}
 	
 	/**

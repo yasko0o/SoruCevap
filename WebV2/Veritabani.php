@@ -259,8 +259,38 @@ class Veritabani {
 		$q = "SELECT * FROM sorular WHERE id = '$aSoruid'"
 		
 		
+		
 		$result = mysql_query ( $q );
 		return mysql_fetch_array ( $result );
+	}
+	
+	/**
+	 *
+	 * @access public
+	 * @param
+	 *       	 aHesap
+	 * @param
+	 *       	 aKisi
+	 * @param
+	 *       	 aSoru
+	 * @param
+	 *       	 aTarih
+	 *       	
+	 *       	
+	 * @return boolean
+	 *
+	 *
+	 */
+	public function Soru_Ekle($aHesap, $aKisi, $aSoru, $aTarih) {
+		$tables = "soru, soran, cevaplayan, tarih, durum";
+		$values = "'$aSoru', '$aHesap', '$aKisi', '$aTarih', '0'";
+		$q = "INSET INTO sorular ($tables) VALUES ($values)"
+		
+		if (mysql_query ( $q )) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
