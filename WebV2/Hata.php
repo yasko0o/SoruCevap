@@ -15,40 +15,59 @@
  * @author Yasin
  */
 class Hata {
-	private $_hata = 0;
-	private $_hata_dizin;
-
+	private $_hata;
+	private $_hata_dizin = array();
+	
 	/**
+	 *
 	 * @access public
 	 */
 	public function Hata() {
-		// Not yet implemented
+		if (isset ( $_SESSION ['hata'] )) {
+			$this->_hata_dizin = $_SESSION ['hata'];
+			$this->_hata = count ( $this->_hata_dizin );
+			unset ( $_SESSION ['hata'] );
+		} else {
+			$this->_hata = 0;
+		}
 	}
-
+	
 	/**
+	 *
 	 * @access public
-	 * @param aHata
-	 * @param aMesaj
+	 * @param
+	 *       	 aHata
+	 * @param
+	 *       	 aMesaj
 	 */
 	public function Ekle($aHata, $aMesaj) {
-		// Not yet implemented
+		$this->_hata_dizin [$aHata] = $aMesaj;
+		$this->_hata = count ( $this->_hata_dizin );
 	}
-
+	
 	/**
+	 *
 	 * @access public
-	 * @param aHata
+	 * @param
+	 *       	 aHata
 	 */
 	public function Dondur($aHata) {
-		// Not yet implemented
+		if (array_key_exists ( $aHata, $this->_hata_dizin )) {
+			return $this->_hata_dizin [$aHata];
+		} else {
+			return "";
+		}
 	}
-
+	
 	/**
+	 *
 	 * @access public
 	 * @return int
-	 * @ReturnType int
+	 * @return Type int
 	 */
 	public function Toplam() {
-		// Not yet implemented
+		return $this->_hata;
 	}
 }
+$Hata = new Hata ();
 ?>

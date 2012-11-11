@@ -1,8 +1,8 @@
 <?php
 
-include 'Web/veritabani.php';
-include 'Web/sistem.php';
-include 'Web/hesap.php';
+//include 'WebV2/Veritabani.php';
+include 'WebV2/Sistem.php';
+include 'WebV2/Hesap.php';
 
 
 ?>
@@ -22,40 +22,46 @@ include 'Web/hesap.php';
 	<div id="genel">
 		<?php 
 		
-			if($oturum->oturum_bilgisi())
-				include TEMP.'/hesap/header.tpl';
+			if($Oturum->Durum())
+				include TEMP.'header.tpl';
 			else
-				include TEMP.'/header.tpl';
+				include $DIR[1].'/header.tpl';
 		?>
 		<div id="icerik_hesap">
                     <div id="hesap">
                        <?php
-                       
+                       /*
+                        * 
+                        * $DIR[1] // -> ayar.php
+                        * 
+                        * $DIR[1] = /Templates/Hesap/
+                        * 
+                        */
                             @$git = $_GET['git'];
                             
                             switch($git) {
                                 case 'arama':
-                                    include TEMP.'/hesap/ara.tpl';
+                                    include $DIR[1].'ara.tpl';
                                     break;
                                 case 'cikis':
-                                	$oturum->oturum_sil();
-                                    //include TEMP.'/hesap/cikis.tpl';
+                                    include $DIR[1].'cikis.tpl';
                                     break;
                                 case 'profil':
-                                    include TEMP.'/hesap/profil.tpl';
+                                    include $DIR[1].'profil.tpl';
                                     break;
                                 case 'ag':
-                                    include TEMP.'/hesap/ag.tpl';
+                                    include $DIR[1].'ag.tpl';
                                     break;
                                 case 'soru':
-                                    include TEMP.'/hesap/soru.tpl';
+                                    include $DIR[1].'soru.tpl';
                                     break;
                                 case 'cevap':
-                                	include TEMP.'/hesap/cevap.tpl';
+                                	include $DIR[1].'cevap.tpl';
                                 	break;
+                                case 'anasayfa':
                                 case 'populer':
                                 default:
-                                    include TEMP.'/hesap/populer.tpl';
+                                    include $DIR[1].'populer.tpl';
                                     break;
                             }
                        

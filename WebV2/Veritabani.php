@@ -14,6 +14,7 @@
  * @access public
  * @author Yasin
  */
+include_once 'ayar.php';
 class Veritabani {
 	
 	/**
@@ -69,7 +70,7 @@ class Veritabani {
 	 * @return Type boolean
 	 */
 	public function Hesap_Olustur($aEmail, $aSifre, $aIsim, $aAcc, $aUniq) {
-		$q = "INSERT INTO hesap (email, pass, isimsoyisim, acces, uniq) VALUES ('$aEmail', '$eSifre', '$eIsim', '$eAcc', '$eUniq')";
+		$q = "INSERT INTO hesap (email, pass, isimsoyisim, acces, uniq) VALUES ('$aEmail', '$aSifre', '$aIsim', '$aAcc', '$aUniq')";
 		
 		if (mysql_query ( $q )) {
 			return true;
@@ -256,7 +257,7 @@ class Veritabani {
 	 * @return Type array
 	 */
 	public function Soru_Bilgileri($aSoruid) {
-		$q = "SELECT * FROM sorular WHERE id = '$aSoruid'"
+		$q = "SELECT * FROM sorular WHERE id = '$aSoruid'";
 		
 		
 		
@@ -284,7 +285,7 @@ class Veritabani {
 	public function Soru_Ekle($aHesap, $aKisi, $aSoru, $aTarih) {
 		$tables = "soru, soran, cevaplayan, tarih, durum";
 		$values = "'$aSoru', '$aHesap', '$aKisi', '$aTarih', '0'";
-		$q = "INSET INTO sorular ($tables) VALUES ($values)"
+		$q = "INSET INTO sorular ($tables) VALUES ($values)";
 		
 		if (mysql_query ( $q )) {
 			return true;

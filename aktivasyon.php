@@ -26,13 +26,13 @@ include 'Web/hesap.php';
 			
 			switch ($adim) {
 				default :
-					include TEMP . 'act/act.tpl';
+					include $DIR [1] . 'act.tpl';
 					break;
 				case 'a2' :
-					include TEMP . 'act/act_a1.tpl';
+					include $DIR [1] . 'act_a1.tpl';
 					break;
 				case 'sonuc' :
-					include TEMP . 'act/act_sonuc.tpl';
+					include $DIR [1] . 'act_sonuc.tpl';
 					break;
 			}
 			

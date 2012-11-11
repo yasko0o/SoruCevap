@@ -1,8 +1,9 @@
 <?php
 
-include 'Web/veritabani.php';
-include 'Web/oturum.php';
-include 'Web/hesap.php';
+//include 'WebV2/Veritabani.php';
+//include 'WebV2/Oturum.php';
+require 'WebV2/Sistem.php';
+require 'WebV2/Hesap.php';
 
 ?>
 

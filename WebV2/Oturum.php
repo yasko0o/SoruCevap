@@ -23,6 +23,7 @@ class Oturum {
 	 * @access public
 	 */
 	public function Oturum() {
+		
 		if (! isset ( $_SESSION ['giris'] ) or $_SESSION ['giris'] == false) {
 			$this->_Oturum = false;
 		} else {
@@ -62,4 +63,5 @@ class Oturum {
 		return $this->_Oturum;
 	}
 }
+$Oturum = new Oturum ();
 ?>

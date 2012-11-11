@@ -14,6 +14,10 @@
  * @access public
  * @author Yasin
  */
+
+include_once 'Au.php';
+include_once 'Hata.php';
+
 class Hesap {
 	
 	/**
@@ -45,7 +49,7 @@ class Hesap {
 	 * @access private
 	 */
 	private function Giris() {
-		global $Veritabani, $oturum, $Hata;
+		global $Veritabani, $Oturum, $Hata;
 		
 		if (! isset ( $_POST ['email'] ) or $_POST ['email'] == "") {
 			$Hata->Ekle ( 'email', giris_email_bos );
@@ -75,7 +79,7 @@ class Hesap {
 		
 		if (! isset ( $_POST ['email'] ) or $_POST ['email'] == "") {
 			$Hata->Ekle ( 'email', giris_email_bos );
-		} elseif ($veritabani->hesap_Kontrol ( $_POST ['email'] )) {
+		} elseif ($Veritabani->Hesap_Kontroll ( $_POST ['email'] )) {
 			$Hata->Ekle ( 'email', giris_email_ayni );
 		}
 		
@@ -93,9 +97,9 @@ class Hesap {
 			
 			if (ACT_GEREKLI) {
 				$act = 0;
-				$aKod = $Au->act_olustur ( rand ( 0, 39 ) );
-				$Veritabani->act_ekle ( $aKod );
-				$au->act_gonder ( $_POST ['email'], $aKod );
+				$aKod = $Au->Aktivasyon_Kod_Olustur ( rand ( 0, 39 ) );
+				$Veritabani->Aktivasyon_Ekle ( $aKod );
+				$Au->Aktivasyon_Email_Gonder ( $_POST ['email'], $aKod );
 				$url = 'aktivasyon.php?adim=a2&email=' . $_POST ['email'] . '&act=' . $act;
 				$_SESSION ['email'] = $_POST ['email'];
 			} else {
@@ -104,14 +108,14 @@ class Hesap {
 			
 			}
 			
-			if (! $veritabani->hesap_Kayit ( $_POST ['email'], md5 ( $_POST ['pass'] ), $_POST ['isimsoyisim'], $act, uniqid ( 'yk_' ) )) {
+			if (! $Veritabani->Hesap_Olustur ( $_POST ['email'], md5 ( $_POST ['pass'] ), $_POST ['isimsoyisim'], $act, uniqid ( 'yk_' ) )) {
 				header ( 'location: kayit.php?git=hata' );
 			} else {
 				if (! ACT_GEREKLI and GIRIS_OTO) {
-					$Oturum->oturum_olustur ( $_POST ['email'] );
+					$Oturum->Olustur ( $_POST ['email'] );
 					$url = 'hesap.php';
 				}
-				header ( 'location: ' . $url );
+				header ( 'Location: ' . $url );
 			}
 		}
 	}
@@ -143,16 +147,16 @@ class Hesap {
 	 * @access private
 	 */
 	private function Soru_Sor() {
-		global $Veritabani, $Hata;		
+		global $Veritabani, $Hata;
 		if (! isset ( $_POST ['soru'] ) or $_POST ['soru'] == "") {
 			$Hata->Ekle ( 'soru', soru_kutu_bos );
-		} elseif (strlen ( $_POST ['soru'] ) > DEF_SORU_MAX_KARAKTER) {
+		} elseif (strlen ( $_POST ['soru'] ) > SORU_MAX_KARAKTER) {
 			$Hata->Ekle ( 'soru', soru_max_karakter );
 		}
 		
 		if ($Hata->Toplam () == 0) {
-			$Veritabani->Soru_Ekle($_SESSION['hesap_uniq'], $_GET['kisi'], $_POST['soru'], time())
-			$Veritabani->Bildiri_Ekle($_GET['kisi'], YENI_SORU_SORULDU, 0)
+			$Veritabani->Soru_Ekle ( $_SESSION ['hesap_uniq'], $_GET ['kisi'], $_POST ['soru'], time () );
+			$Veritabani->Bildiri_Ekle ( $_GET ['kisi'], bildiri_yeni_soru, 0 );
 			header ( "Location: hesap.php?git=soru" );
 		
 		}
@@ -197,4 +201,5 @@ class Hesap {
 		}
 	}
 }
+$Hesap = new Hesap ();
 ?>

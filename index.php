@@ -1,6 +1,6 @@
 <?php
-include 'Web/veritabani.php';
-include 'Web/sistem.php';
+//include 'WebV2/Veritabani.php';
+require 'WebV2/Sistem.php';
 ?>
 
 

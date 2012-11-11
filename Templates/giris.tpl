@@ -5,12 +5,12 @@
                	  <div class="kayit_form">
                     	<h3>e-posta adresiniz</h3>
                         <input type="text" class="inputbox" name="email" id="email" value="" />
-                        <h1><?php echo $hata->hata_Goster('email'); ?></h1>
+                        <h1><?php echo $Hata->Dondur('email'); ?></h1>
                     </div>
                   <div class="kayit_form">
                    	<h3>Sifreniz</h3>
                         <input type="text" class="inputbox" name="pass" id="pass" value="" />
-                    <h1><?php echo $hata->hata_Goster('pass'); ?></h1>
+                    <h1><?php echo $Hata->Dondur('pass'); ?></h1>
                   </div>
                  
                  <div class="kayit_form">

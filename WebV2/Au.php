@@ -72,4 +72,5 @@ class Au {
 		}
 	}
 }
+$Au = new Au ();
 ?>
