@@ -1,0 +1,75 @@
+<?php
+
+//include 'WebV2/Veritabani.php';
+include 'WebV2/Sistem.php';
+include 'WebV2/Hesap.php';
+
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Soru Cevap</title>
+<link href="default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery.js"></script>  
+<script type="text/javascript" src="Templates/yonlendir.js"></script>  
+
+</head>
+
+<body>
+	<div id="genel">
+		<?php 
+		
+			if($Oturum->Durum())
+				include TEMP.'header.tpl';
+			else
+				include $DIR[1].'/header.tpl';
+		?>
+		<div id="icerik_hesap">
+                    <div id="hesap">
+                       <div id="ayar">
+                       		<div id="ayar_menu">
+                            	<ul>
+                                	<li><a href="/hesap/profil">profil</a></li>
+                                    <li><a href="/hesap/guvenlik">gizlilik</a></li>
+                                    <li><a href="/hesap/tasarim">tasarim</a></li>
+                                    <li><a href="/hesap/hizmetler">hizmetler</a></li>
+                                    <li><a href="/hesap/gerec">gerec</a></li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </div>
+                             <div class="kayit_form">
+                    	<h3>e-posta adresiniz</h3>
+                        <input type="text" class="inputbox" name="email" id="email" value="" />
+                        <h1><?php echo $Hata->Dondur('email'); ?></h1>
+                    </div>
+                  <div class="kayit_form">
+                   	<h3>Ad, Soyad</h3>
+                        <input type="text" class="inputbox" name="isimsoyisim" id="isimsoyisim" value="" />
+                    <h1><?php echo $Hata->Dondur('isim'); ?></h1>
+                  </div>
+                  <div class="kayit_form">
+                   	  <h3>Sifreniz</h3>
+                        <input type="text" class="inputbox" name="pass" id="pass" value="" />
+                        <h1><?php echo $Hata->Dondur('pass'); ?></h1>
+                    </div>
+                    <div class="kayit_form">
+                   	  <h3>Sifreyi tekrarla</h3>
+                        <input type="text" class="inputbox" name="pass2" id="pass2" value="" />
+                        <h1><?php echo $Hata->Dondur('pass2'); ?></h1>
+                    </div>
+                	
+                	<div class="kayit_form">
+                   		<h3></h3>
+                       		 <input type="submit" class="button medium green" value="gonder" />
+                    	<h1></h1>
+                  </div>
+                       </div>
+                    </div>
+		</div>
+		<?php include TEMP.'/foother_in.tpl';?>
+	</div>
+</body>
+</html>

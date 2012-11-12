@@ -220,4 +220,28 @@ header #lg_menu ul li a:hover {
 	border-top-style: solid;
 	border-top-color: #E5E5E5;	
 
+}#hesap #ayar {
+}
+#hesap #ayar #ayar_menu ul li a {
+	text-decoration: none;
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #C0C0C0;
+	font-weight: bold;
+	display: block;
+	width: 100px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #2D2D2D;
+	padding-right: 5px;
+}
+#hesap #ayar #ayar_menu ul {
+	padding-bottom: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #D5D5D5;
 }
