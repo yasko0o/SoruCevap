@@ -15,7 +15,7 @@ include 'WebV2/Hesap.php';
 <link href="default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>  
 <script type="text/javascript" src="Templates/yonlendir.js"></script>  
-
+<base href="http://localhost/SoruCevap/">
 </head>
 
 <body>

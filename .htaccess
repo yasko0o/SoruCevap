@@ -3,9 +3,9 @@ Options +Indexes +FollowSymLinks
 
 RewriteEngine On
 
-#RewriteRule ^([a-z0-9_-]+)$   $1.php [L]
+RewriteRule ^([a-z0-9_-]+)$   $1.php [L]
 #RewriteRule ^(.*)$ hesap.php?git=$1 [NC]
-
+RewriteRule ^hesap/([a-z0-9_-]+)$ hesap.php?git=$1 [L,NC]
 
 </IfModule>
 
